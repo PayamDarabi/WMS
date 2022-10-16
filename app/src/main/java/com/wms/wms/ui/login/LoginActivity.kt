@@ -29,8 +29,11 @@ class LoginActivity : AppCompatActivity() {
 
         val username = binding.username
         val password = binding.password
+        val serverPath = binding.serverPath
         val login = binding.login
         val loading = binding.loading
+        val icon = binding.icon
+
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -95,6 +98,11 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+        }
+
+        icon.setOnClickListener {
+            serverPath.visibility=View.VISIBLE
+            icon.visibility=View.GONE
         }
     }
 
