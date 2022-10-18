@@ -3,13 +3,12 @@ package com.wms.wms.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
-import com.wms.wms.data.LoginRepository
-import com.wms.wms.data.Result
+import com.wms.wms.data.LoginApi
+import com.wms.wms.data.model.Result
 
 import com.wms.wms.R
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -17,13 +16,15 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String) {
+    suspend fun login(baseUrl:String, username: String, password: String) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+        val result = loginApi.login(baseUrl,username, password)
 
         if (result is Result.Success) {
             _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+                LoginResult(success = LoggedInUserView(result.data.isSucceed,result.data.updatedAny,result.data.messageCode,result.data.messageType,
+                result.data.messages,result.data.returnValue,result.data.entityId,result.data.enableUpdate,result.data.enableInsert,result.data.enableClose,
+                result.data.enableConfirm,result.data.entityStringKey))
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }
