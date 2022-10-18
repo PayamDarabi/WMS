@@ -73,7 +73,7 @@ class UserManager {
         fun get(): User? {
             val current = Calendar.getInstance().time
 
-            if (user!!.expireAt <= current.time) {
+            if (user !== null && user!!.expireAt <= current.time) {
                 logout();
             }
 

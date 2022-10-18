@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.WindowManager
 import com.wms.wms.R
 import com.wms.wms.data.UserManager
+import com.wms.wms.ui.home.HomeActivity
 import com.wms.wms.ui.login.LoginActivity
 
 
@@ -28,12 +29,13 @@ class SplashScreen : AppCompatActivity() {
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
         Handler().postDelayed({
-            if(UserManager.get()!!.accessToken == null) {
-                val intent = Intent(this, LoginActivity::class.java)
+            val user = UserManager.get()
+            if(user === null || user.accessToken == null) {
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }else{
                 //Home
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }
 
