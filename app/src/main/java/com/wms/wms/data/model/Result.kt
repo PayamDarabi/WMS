@@ -1,4 +1,4 @@
-package com.wms.wms.data
+package com.wms.wms.data.model
 
 /**
  * A generic class that holds a value with its loading status.

@@ -10,4 +10,5 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >8 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="default_base_server_path">http://gi.bitfinity.ir/mobile/v1/</string>
 </resources>

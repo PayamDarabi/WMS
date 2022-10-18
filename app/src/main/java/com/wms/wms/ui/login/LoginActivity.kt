@@ -8,13 +8,19 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.wms.wms.databinding.ActivityLoginBinding
 
 import com.wms.wms.R
+import com.wms.wms.data.api.IApi
+import com.wms.wms.data.api.RetrofitClient
+import com.wms.wms.data.helper.PreferenceHelper
+import kotlinx.coroutines.runBlocking
 
 class LoginActivity : AppCompatActivity() {
 
@@ -86,17 +92,32 @@ class LoginActivity : AppCompatActivity() {
             setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
-                        )
+                      lifecycleScope.launchWhenCreated {
+                          PreferenceHelper.defaultPrefs(context).getString(
+                              "BaseUrl",
+                              context.getString(R.string.default_base_server_path)
+                          )
+                              ?.let {
+                                  loginViewModel.login(
+                                      it,
+                                      username.text.toString(),
+                                      password.text.toString()
+                                  )
+                              }
+                      }
                 }
                 false
             }
 
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
+                lifecycleScope.launchWhenCreated {
+                    loginViewModel.login(
+                        serverPath.text.toString(),
+                        username.text.toString(),
+                        password.text.toString()
+                    )
+                }
             }
         }
 
@@ -106,13 +127,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
+
         // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
-            "$welcome $displayName",
+            "$welcome $",
             Toast.LENGTH_LONG
         ).show()
     }

@@ -3,7 +3,7 @@ package com.wms.wms.ui.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.wms.wms.data.LoginDataSource
-import com.wms.wms.data.LoginRepository
+import com.wms.wms.data.LoginApi
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
@@ -15,7 +15,7 @@ class LoginViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(
-                loginRepository = LoginRepository(
+                loginApi = LoginApi(
                     dataSource = LoginDataSource()
                 )
             ) as T
