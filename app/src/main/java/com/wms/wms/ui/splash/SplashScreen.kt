@@ -26,12 +26,22 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
+
+        UserManager.addLoginListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        UserManager.addLogoutListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
         Handler().postDelayed({
             val user = UserManager.get()
             if(user === null || user.accessToken == null) {
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }else{
                 //Home

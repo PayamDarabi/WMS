@@ -3,6 +3,7 @@ package com.wms.wms.data
 import android.util.Log
 import com.wms.wms.data.api.IApi
 import com.wms.wms.data.api.RetrofitClient
+import com.wms.wms.data.model.ExceptionResponse
 import com.wms.wms.data.model.LoginRequest
 import com.wms.wms.data.model.Result
 import com.wms.wms.data.model.LoginResponse
@@ -20,13 +21,14 @@ class LoginDataSource {
 
         try {
             val response = apiInterface.login(LoginRequest(username, password))
+
             return if (response.isSuccessful()) {
                 //your code for handaling success response
                 val data = response.body()!!
                 Result.Success(data)
             } else {
                 //todo: new exception to raise
-                Result.Success(LoginResponse(false,false,1,1,"","","",
+                Result.RequestError(ExceptionResponse(false,false,1,1,"","","",
                     false,false,false,false,false))
             }
         } catch (Ex: Exception) {

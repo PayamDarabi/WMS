@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:inputType="text"
+        android:text="m.shahryari"
         android:selectAllOnFocus="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,6 +44,7 @@
         android:layout_marginTop="8dp"
         android:id="@+id/tilpassword"
         android:hint="@string/prompt_password"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilusername">
@@ -52,6 +54,7 @@
         android:layout_height="match_parent"
         android:imeActionLabel="@string/login"
         android:imeOptions="actionDone"
+        android:text="1qaz@WSX"
         android:inputType="textPassword"
         android:selectAllOnFocus="true" />
     </com.google.android.material.textfield.TextInputLayout>

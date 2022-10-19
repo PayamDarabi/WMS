@@ -1,9 +1,5 @@
 package com.wms.wms.data.api
 
-import android.content.Context
-import com.wms.wms.R
-import com.wms.wms.data.helper.PreferenceHelper
-import com.wms.wms.data.helper.PreferenceHelper.get
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
