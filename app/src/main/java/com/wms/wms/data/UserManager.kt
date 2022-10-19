@@ -90,7 +90,7 @@ class UserManager {
             edit.putString("username", null)
             edit.putString("accessToken", null)
             edit.putLong("expireAt", 0)
-            edit.commit()
+            edit.apply()
         }
 
         fun login(
@@ -99,8 +99,6 @@ class UserManager {
             expireAt: Long,
         ) {
             if (!username.isNullOrEmpty() && !accessToken.isNullOrEmpty()) {
-                eventManager.notify(LoginEvent())
-                user = User(username, accessToken, expireAt)
 
                 var sharedPreferences =
                     applicationContext!!.getSharedPreferences("UserManager", Context.MODE_PRIVATE);
@@ -108,7 +106,10 @@ class UserManager {
                 edit.putString("username", username)
                 edit.putString("accessToken", accessToken)
                 edit.putLong("expireAt", expireAt)
-                edit.commit()
+                edit.apply()
+
+                eventManager.notify(LoginEvent())
+                user = User(username, accessToken, expireAt)
             }
         }
 
