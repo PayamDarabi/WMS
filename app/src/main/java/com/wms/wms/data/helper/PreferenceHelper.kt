@@ -3,46 +3,37 @@ package com.wms.wms.data.helper
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.google.gson.Gson
 
 object PreferenceHelper {
 
-    fun defaultPrefs(context: Context): SharedPreferences
-            = PreferenceManager.getDefaultSharedPreferences(context)
+    fun defaultPrefs(context: Context): SharedPreferences =
+        context.getSharedPreferences("data",Context.MODE_PRIVATE)
 
-    fun customPrefs(context: Context, name: String): SharedPreferences
-            = context.getSharedPreferences(name, Context.MODE_PRIVATE)
+    inline fun <reified T : Any> getObject(context: Context, key: String, defaultValue: T? = null): T? {
+        val result = defaultPrefs(context).getString(key, null)
 
-    private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
-        val editor = this.edit()
-        operation(editor)
+        if (result === null) {
+            return defaultValue
+        }
+        var gson = Gson()
+        return gson.fromJson(result, T::class.java)
+    }
+
+    fun setObject(context: Context, key: String, value: Any?) {
+        val editor = defaultPrefs(context).edit()
+        var gson = Gson()
+        editor.putString(key, gson.toJson(value))
         editor.apply()
     }
 
-    /**
-     * puts a value for the given [key].
-     */
-    operator fun SharedPreferences.set(key: String, value: Any?)
-            = when (value) {
-        is String? -> edit { it.putString(key, value) }
-        is Int -> edit { it.putInt(key, value) }
-        is Boolean -> edit { it.putBoolean(key, value) }
-        is Float -> edit { it.putFloat(key, value) }
-        is Long -> edit { it.putLong(key, value) }
-        else -> throw UnsupportedOperationException("Not yet implemented")
+    fun getString(context: Context, key: String, defaultValue: String? = null): String? {
+        return defaultPrefs(context).getString(key, defaultValue)
     }
 
-    /**
-     * finds a preference based on the given [key].
-     * [T] is the type of value
-     * @param defaultValue optional defaultValue - will take a default defaultValue if it is not specified
-     */
-    inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T
-            = when (T::class) {
-        String::class -> getString(key, defaultValue as? String ?: "") as T
-        Int::class -> getInt(key, defaultValue as? Int ?: -1) as T
-        Boolean::class -> getBoolean(key, defaultValue as? Boolean ?: false) as T
-        Float::class -> getFloat(key, defaultValue as? Float ?: -1f) as T
-        Long::class -> getLong(key, defaultValue as? Long ?: -1) as T
-        else -> throw UnsupportedOperationException("Not yet implemented")
+    fun setString(context: Context, key: String, value: String?) {
+        val editor = defaultPrefs(context).edit()
+        editor.putString(key, value)
+        editor.apply()
     }
 }

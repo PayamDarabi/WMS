@@ -1,14 +1,16 @@
 package com.wms.wms.data
 
 import android.content.Context
+import com.wms.wms.data.helper.PreferenceHelper
 import java.util.*
 import kotlin.reflect.KClass
 
 
 class User(
-    public var username: String,
-    public var accessToken: String,
-    public var expireAt: Long,
+    var username: String,
+    var accessToken: String,
+    var expireAt: Long,
+    var cookie: String,
 ) {}
 
 
@@ -59,14 +61,11 @@ class UserManager {
         fun initilize(context: Context) {
             applicationContext = context;
 
-            var sharedPreferences =
-                context.getSharedPreferences("UserManager", Context.MODE_PRIVATE);
-            var username = sharedPreferences.getString("username", null);
-            var accessToken = sharedPreferences.getString("accessToken", null);
-            var expireAt = sharedPreferences.getLong("expireAt", 0);
+            PreferenceHelper.getObject<User>(context, "UserManager", null)?.let {
 
-            if (!username.isNullOrEmpty() && !accessToken.isNullOrEmpty()) {
-                user = User(username, accessToken, expireAt)
+                if (!it.username.isNullOrEmpty() && !it.accessToken.isNullOrEmpty()) {
+                    user = it
+                }
             }
         }
 
@@ -84,32 +83,22 @@ class UserManager {
             user = null;
             eventManager.notify(LogoutEvent())
 
-            var sharedPreferences =
-                applicationContext!!.getSharedPreferences("UserManager", Context.MODE_PRIVATE);
-            var edit = sharedPreferences.edit()
-            edit.putString("username", null)
-            edit.putString("accessToken", null)
-            edit.putLong("expireAt", 0)
-            edit.apply()
+            PreferenceHelper.setObject(applicationContext!!, "UserManager", null)
         }
 
         fun login(
             username: String?,
             accessToken: String?,
             expireAt: Long,
+            cookie: String
         ) {
             if (!username.isNullOrEmpty() && !accessToken.isNullOrEmpty()) {
 
-                var sharedPreferences =
-                    applicationContext!!.getSharedPreferences("UserManager", Context.MODE_PRIVATE);
-                var edit = sharedPreferences.edit()
-                edit.putString("username", username)
-                edit.putString("accessToken", accessToken)
-                edit.putLong("expireAt", expireAt)
-                edit.apply()
+                user = User(username, accessToken, expireAt, cookie)
+
+                PreferenceHelper.setObject(applicationContext!!, "UserManager", user)
 
                 eventManager.notify(LoginEvent())
-                user = User(username, accessToken, expireAt)
             }
         }
 
@@ -129,5 +118,6 @@ class UserManager {
                 }
             })
         }
+
     }
 }

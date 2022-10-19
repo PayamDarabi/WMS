@@ -11,12 +11,7 @@ import com.wms.wms.data.model.Result
 class LoginApi(val dataSource: LoginDataSource) {
     suspend fun login(baseUrl: String, username: String, password: String): Result<LoginResponse>? {
         // handle login
-        val result = dataSource.login(baseUrl, username, password)
 
-        if (result is Result.Success) {
-            UserManager.login(result.data.username, result.data.accessToken, 1000 * 60 * 60)
-        }
-
-        return result
+        return dataSource.login(baseUrl, username, password)
     }
 }

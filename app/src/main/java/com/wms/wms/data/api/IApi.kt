@@ -10,5 +10,7 @@ import retrofit2.http.POST
 interface IApi {
     @Headers("Content-Type: application/json")
     @POST("Login")
-    suspend fun login(@Body loginRequest: LoginRequest): Response<LoginResponse>
+    suspend fun login(
+        @Body loginRequest: LoginRequest
+    ): Response<LoginResponse>
 }

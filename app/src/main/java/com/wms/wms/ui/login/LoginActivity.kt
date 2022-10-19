@@ -1,26 +1,21 @@
 package com.wms.wms.ui.login
 
 import android.app.Activity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.wms.wms.databinding.ActivityLoginBinding
-
 import com.wms.wms.R
-import com.wms.wms.data.api.IApi
-import com.wms.wms.data.api.RetrofitClient
 import com.wms.wms.data.helper.PreferenceHelper
-import kotlinx.coroutines.runBlocking
+import com.wms.wms.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
@@ -92,19 +87,20 @@ class LoginActivity : AppCompatActivity() {
             setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
-                      lifecycleScope.launchWhenCreated {
-                          PreferenceHelper.defaultPrefs(context).getString(
-                              "BaseUrl",
-                              context.getString(R.string.default_base_server_path)
-                          )
-                              ?.let {
-                                  loginViewModel.login(
-                                      it,
-                                      username.text.toString(),
-                                      password.text.toString()
-                                  )
-                              }
-                      }
+                        lifecycleScope.launchWhenCreated {
+                            PreferenceHelper.getString(
+                                context,
+                                "BaseUrl",
+                                context.getString(R.string.default_base_server_path)
+                            )
+                                ?.let {
+                                    loginViewModel.login(
+                                        it,
+                                        username.text.toString(),
+                                        password.text.toString()
+                                    )
+                                }
+                        }
                 }
                 false
             }
@@ -122,8 +118,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         icon.setOnClickListener {
-            serverPath.visibility=View.VISIBLE
-            icon.visibility=View.GONE
+            serverPath.visibility = View.VISIBLE
+            icon.visibility = View.GONE
         }
     }
 
