@@ -1,4 +1,4 @@
-package com.wms.wms.data.model
+package com.wms.wms.data.model.response
 
 import com.google.gson.annotations.SerializedName
 

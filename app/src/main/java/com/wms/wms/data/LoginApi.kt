@@ -1,7 +1,7 @@
 package com.wms.wms.data
 
-import com.wms.wms.data.model.LoginResponse
-import com.wms.wms.data.model.Result
+import com.wms.wms.data.model.response.LoginResponse
+import com.wms.wms.data.model.response.ApiResult
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -9,7 +9,7 @@ import com.wms.wms.data.model.Result
  */
 
 class LoginApi(val dataSource: LoginDataSource) {
-    suspend fun login(baseUrl: String, username: String, password: String): Result<LoginResponse>? {
+    suspend fun login(baseUrl: String, username: String, password: String): ApiResult<LoginResponse>? {
         // handle login
 
         return dataSource.login(baseUrl, username, password)

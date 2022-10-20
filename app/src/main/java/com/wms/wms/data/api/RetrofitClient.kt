@@ -1,6 +1,7 @@
 package com.wms.wms.data.api
 
 import com.wms.wms.data.UserManager
+import com.wms.wms.data.helper.PreferenceHelper
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    fun getInstance(baseUrl: String): Retrofit {
+    fun getInstance(): Retrofit {
         var mHttpLoggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -30,7 +31,7 @@ object RetrofitClient {
 
 
         var retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(PreferenceHelper.getString("BaseUrl"))
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()

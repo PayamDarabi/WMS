@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wms.wms.R
 import com.wms.wms.data.LoginApi
-import com.wms.wms.data.UserManager
-import com.wms.wms.data.model.Result
+import com.wms.wms.data.model.response.ApiResult
 
 class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
 
@@ -20,7 +19,7 @@ class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
         // can be launched in a separate asynchronous job
         val result = loginApi.login(baseUrl, username, password)
 
-        if (result is Result.Success) {
+        if (result is ApiResult.Success) {
             _loginResult.value = LoginResult(error = R.string.login)
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)

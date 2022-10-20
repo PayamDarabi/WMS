@@ -1,14 +1,14 @@
-package com.wms.wms.data.model
+package com.wms.wms.data.model.response
 
 /**
  * A generic class that holds a value with its loading status.
  * @param <T>
  */
-sealed class Result<out T : Any> {
+sealed class ApiResult<out T : Any> {
 
-    data class Success<out T : Any>(val data: T) : Result<T>()
-    data class Error(val exception: Exception) : Result<Nothing>()
-    data class RequestError(val exception: ExceptionResponse) : Result<Nothing>()
+    data class Success<out T : Any>(val data: T) : ApiResult<T>()
+    data class Error(val exception: Exception) : ApiResult<Nothing>()
+    data class RequestError(val exception: ExceptionResponse) : ApiResult<Nothing>()
 
     override fun toString(): String {
         return when (this) {

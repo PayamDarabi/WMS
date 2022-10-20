@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.WindowManager
 import com.wms.wms.R
 import com.wms.wms.data.UserManager
+import com.wms.wms.data.helper.PreferenceHelper
 import com.wms.wms.ui.home.HomeActivity
 import com.wms.wms.ui.login.LoginActivity
 
@@ -17,7 +18,8 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        UserManager.initilize( applicationContext)
+        PreferenceHelper.initilize(applicationContext)
+        UserManager.initilize()
 
         // This is used to hide the status bar and make
         // the splash screen as a full screen activity.

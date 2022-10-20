@@ -3,10 +3,10 @@ package com.wms.wms.data
 import android.util.Log
 import com.wms.wms.data.api.IApi
 import com.wms.wms.data.api.RetrofitClient
-import com.wms.wms.data.model.ExceptionResponse
-import com.wms.wms.data.model.LoginRequest
-import com.wms.wms.data.model.LoginResponse
-import com.wms.wms.data.model.Result
+import com.wms.wms.data.model.response.ExceptionResponse
+import com.wms.wms.data.model.request.LoginRequest
+import com.wms.wms.data.model.response.LoginResponse
+import com.wms.wms.data.model.response.ApiResult
 import java.util.*
 
 /**
@@ -15,7 +15,7 @@ import java.util.*
 
 
 class LoginDataSource {
-    suspend fun login(baseUrl: String, username: String, password: String): Result<LoginResponse> {
+    suspend fun login(baseUrl: String, username: String, password: String): ApiResult<LoginResponse> {
         var retrofit = RetrofitClient.getInstance(baseUrl)
         var apiInterface = retrofit.create(IApi::class.java)
 
@@ -36,9 +36,9 @@ class LoginDataSource {
                         current.time + (1000 * 60 * 60),
                         cookie
                     )
-                    return Result.Success(data)
+                    return ApiResult.Success(data)
                 }
-                return Result.RequestError(
+                return ApiResult.RequestError(
 
                     ExceptionResponse(
                         false, false, 1, 1, "Cookie is empty", "", "",
@@ -47,7 +47,7 @@ class LoginDataSource {
                 )
             } else {
                 //todo: new exception to raise
-               return Result.RequestError(
+               return ApiResult.RequestError(
                     ExceptionResponse(
                         false, false, 1, 1, "", "", "",
                         false, false, false, false, false
@@ -55,7 +55,7 @@ class LoginDataSource {
                 )
             }
         } catch (Ex: Exception) {
-            return Result.Error(Ex)
+            return ApiResult.Error(Ex)
             Log.e("Error", Ex.localizedMessage)
         }
     }

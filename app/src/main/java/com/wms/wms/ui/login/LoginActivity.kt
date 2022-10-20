@@ -85,21 +85,16 @@ class LoginActivity : AppCompatActivity() {
             }
 
             setOnEditorActionListener { _, actionId, _ ->
+                loading.visibility = View.VISIBLE
+                PreferenceHelper.setString("BaseUrl", serverPath.text.toString())
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         lifecycleScope.launchWhenCreated {
-                            PreferenceHelper.getString(
-                                context,
-                                "BaseUrl",
-                                context.getString(R.string.default_base_server_path)
+                            loginViewModel.login(
+                                serverPath.text.toString(),
+                                username.text.toString(),
+                                password.text.toString()
                             )
-                                ?.let {
-                                    loginViewModel.login(
-                                        it,
-                                        username.text.toString(),
-                                        password.text.toString()
-                                    )
-                                }
                         }
                 }
                 false
@@ -107,6 +102,7 @@ class LoginActivity : AppCompatActivity() {
 
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
+                PreferenceHelper.setString("BaseUrl", serverPath.text.toString())
                 lifecycleScope.launchWhenCreated {
                     loginViewModel.login(
                         serverPath.text.toString(),
