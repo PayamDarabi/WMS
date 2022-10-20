@@ -8,7 +8,7 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be > 8 characters</string>
+    <string name="invalid_password">Password must be >= 8 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_home">"Home"</string>
     <string name="nav_header_desc">"nav_header_desc"</string>
@@ -17,4 +17,9 @@
     <string name="menu_home">"menu_home"</string>
     <string name="action_settings">"action_settings"</string>
     <string name="default_base_server_path">http://gi.bitfinity.ir/mobile/v1/</string>
+    <string name="picking">Picking</string>
+    <string name="shipping">Shipping</string>
+    <string name="transfer">Transfer</string>
+    <string name="putaway">Putaway</string>
+    <string name="receiving">Receiving</string>
 </resources>
