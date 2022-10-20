@@ -15,9 +15,9 @@ class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    suspend fun login(baseUrl: String, username: String, password: String) {
+    suspend fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        val result = loginApi.login(baseUrl, username, password)
+        val result = loginApi.login(username, password)
 
         if (result is ApiResult.Success) {
             _loginResult.value = LoginResult(error = R.string.login)
@@ -43,6 +43,6 @@ class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5 && password.isNotBlank()
+        return password.length > 8 && password.isNotBlank()
     }
 }

@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.wms.wms.R
 import com.wms.wms.data.helper.PreferenceHelper
 import com.wms.wms.databinding.ActivityLoginBinding
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,8 +34,6 @@ class LoginActivity : AppCompatActivity() {
         val serverPath = binding.serverPath
         val login = binding.login
         val loading = binding.loading
-        val icon = binding.icon
-
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -44,7 +43,14 @@ class LoginActivity : AppCompatActivity() {
 
             // disable login button unless both username / password is valid
             login.isEnabled = loginState.isDataValid
-
+            if(loginState.isDataValid) {
+                login.setBackgroundColor(getColor(R.color.yellow_500))
+                login.setTextColor(getColor(R.color.white))
+            }
+            else{
+                login.setBackgroundColor(getColor(R.color.gray_200))
+                login.setTextColor(getColor(R.color.gray_700))
+            }
             if (loginState.usernameError != null) {
                 username.error = getString(loginState.usernameError)
             }
@@ -91,7 +97,6 @@ class LoginActivity : AppCompatActivity() {
                     EditorInfo.IME_ACTION_DONE ->
                         lifecycleScope.launchWhenCreated {
                             loginViewModel.login(
-                                serverPath.text.toString(),
                                 username.text.toString(),
                                 password.text.toString()
                             )
@@ -105,17 +110,11 @@ class LoginActivity : AppCompatActivity() {
                 PreferenceHelper.setString("BaseUrl", serverPath.text.toString())
                 lifecycleScope.launchWhenCreated {
                     loginViewModel.login(
-                        serverPath.text.toString(),
                         username.text.toString(),
                         password.text.toString()
                     )
                 }
             }
-        }
-
-        icon.setOnClickListener {
-            serverPath.visibility = View.VISIBLE
-            icon.visibility = View.GONE
         }
     }
 

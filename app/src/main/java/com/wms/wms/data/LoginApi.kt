@@ -9,9 +9,9 @@ import com.wms.wms.data.model.response.ApiResult
  */
 
 class LoginApi(val dataSource: LoginDataSource) {
-    suspend fun login(baseUrl: String, username: String, password: String): ApiResult<LoginResponse>? {
+    suspend fun login(username: String, password: String): ApiResult<LoginResponse>? {
         // handle login
 
-        return dataSource.login(baseUrl, username, password)
+        return dataSource.login(username, password)
     }
 }

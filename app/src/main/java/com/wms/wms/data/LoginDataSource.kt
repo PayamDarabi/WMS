@@ -15,8 +15,8 @@ import java.util.*
 
 
 class LoginDataSource {
-    suspend fun login(baseUrl: String, username: String, password: String): ApiResult<LoginResponse> {
-        var retrofit = RetrofitClient.getInstance(baseUrl)
+    suspend fun login(username: String, password: String): ApiResult<LoginResponse> {
+        var retrofit = RetrofitClient.getInstance()
         var apiInterface = retrofit.create(IApi::class.java)
 
         try {
