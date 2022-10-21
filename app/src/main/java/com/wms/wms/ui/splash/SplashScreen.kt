@@ -43,7 +43,7 @@ class SplashScreen : AppCompatActivity() {
         Handler().postDelayed({
             val user = UserManager.get()
             if(user === null || user.accessToken == null) {
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }else{
                 //Home
