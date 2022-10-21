@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gredient"
     android:id="@+id/frgmHomeContainer"
     tools:context=".ui.home.HomeFragment">
 
@@ -55,7 +56,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:id="@+id/relReceiving"
                 android:layout_height="wrap_content">
 
 
@@ -63,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="true"
+                    android:id="@+id/cardReceiving"
                     android:focusable="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"

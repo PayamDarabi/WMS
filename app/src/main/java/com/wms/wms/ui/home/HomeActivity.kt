@@ -27,7 +27,8 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        homeViewModel = ViewModelProvider(this, HomeViewModelFactory())[HomeViewModel::class.java]
+        homeViewModel = ViewModelProvider(this, HomeViewModelFactory())
+            .get(HomeViewModel::class.java)
 
         setSupportActionBar(binding.appBarHome.toolbar)
 
@@ -39,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,
+                R.id.nav_receiving,
 //                R.id.nav_gallery, R.id.nav_slideshow
             ), drawerLayout
         )
