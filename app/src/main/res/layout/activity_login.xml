@@ -20,7 +20,8 @@
         android:textColor="@color/gray_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="36sp">
+        android:textSize="36sp"
+        tools:ignore="MissingConstraints">
     </androidx.appcompat.widget.AppCompatTextView>
 
     <androidx.appcompat.widget.LinearLayoutCompat
