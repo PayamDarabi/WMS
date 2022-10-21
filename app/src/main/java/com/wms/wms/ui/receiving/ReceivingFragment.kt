@@ -1,14 +1,13 @@
 package com.wms.wms.ui.receiving
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.wms.wms.R
-import com.wms.wms.databinding.FragmentHomeBinding
 import com.wms.wms.databinding.FragmentReceivingBinding
 import com.wms.wms.ui.home.HomeViewModel
 
@@ -28,6 +27,13 @@ class ReceivingFragment : Fragment() {
 
         _binding = FragmentReceivingBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val cardReceiving = binding.toReceiptingDetails
+        cardReceiving.setOnClickListener {
+            findNavController().navigate(
+                R.id.nav_receiving_details, null, null
+            )
+        }
 
         return root
     }

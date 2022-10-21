@@ -3,6 +3,10 @@
     <style name="Theme.WMS" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorBackground">#f2f2f2</item>
         <item name="colorOnBackground">#676666</item>
+
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/gray_700</item>
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/yellow_500</item>
         <item name="colorPrimaryVariant">@color/yellow_700</item>

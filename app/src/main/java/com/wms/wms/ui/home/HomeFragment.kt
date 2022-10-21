@@ -5,19 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.wms.wms.R
 import com.wms.wms.databinding.FragmentHomeBinding
-import com.wms.wms.ui.receiving.ReceivingFragment
-import java.time.Duration
 
 class HomeFragment : Fragment() {
 
@@ -40,10 +33,8 @@ class HomeFragment : Fragment() {
 
         val cardReceiving: CardView = binding.cardReceiving
         cardReceiving.setOnClickListener {
-            findNavController().navigate(R.id.nav_receiving, null, NavOptions.Builder()
-                .setPopUpTo(R.id.nav_home, true)
-                .build())
-       }
+            findNavController().navigate(R.id.nav_receiving, null, null)
+        }
         return root
     }
 
