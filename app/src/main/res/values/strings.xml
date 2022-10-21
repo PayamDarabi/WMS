@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WMS</string>
-    <!-- Strings related to login -->
+    <string name="default_base_server_path">http://gi.bitfinity.ir/mobile/v1/</string>
+
     <string name="login">Login</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
@@ -14,12 +15,15 @@
     <string name="nav_header_desc">"nav_header_desc"</string>
     <string name="nav_header_title">"nav_header_title"</string>
     <string name="nav_header_subtitle">"nav_header_subtitle"</string>
-    <string name="menu_home">"menu_home"</string>
+    <string name="menu_home">"Menu"</string>
     <string name="action_settings">"action_settings"</string>
-    <string name="default_base_server_path">http://gi.bitfinity.ir/mobile/v1/</string>
     <string name="picking">Picking</string>
     <string name="shipping">Shipping</string>
     <string name="transfer">Transfer</string>
     <string name="putaway">Putaway</string>
     <string name="receiving">Receiving</string>
+    <string name="inventory">Inventory</string>
+    <string name="report">Report</string>
+    <string name="logout">Logout</string>
+    <string name="fullname">FullName</string>
 </resources>

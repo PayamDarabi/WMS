@@ -9,4 +9,31 @@
             android:icon="@drawable/ic_baseline_home"
             android:title="@string/menu_home" />
     </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_receiving"
+            android:icon="@drawable/ic_baseline_time_to_leave_24"
+            android:title="@string/receiving" />
+        <item
+            android:id="@+id/nav_putaway"
+            android:icon="@drawable/ic_baseline_input_24"
+            android:title="@string/putaway" />
+        <item
+            android:id="@+id/nav_picking"
+            android:title="@string/picking" />
+        <item
+            android:id="@+id/nav_shipping"
+            android:title="@string/shipping" />
+        <item
+            android:id="@+id/nav_transfer"
+            android:title="@string/transfer" />
+        <item
+            android:id="@+id/nav_inventory"
+            android:title="@string/inventory" />
+
+        <item
+            android:id="@+id/nav_report"
+            android:title="@string/report" />
+    </group>
+
 </menu>
