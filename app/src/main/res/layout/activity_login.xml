@@ -65,12 +65,11 @@
             android:background="@drawable/edittext_bg"
             android:layout_marginBottom="16dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
-                android:selectAllOnFocus="true"
                 android:text="m.shahryari" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -78,18 +77,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:id="@+id/tilpassword"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/yellow_200"
             android:background="@drawable/edittext_bg"
             android:hint="@string/prompt_password"
             android:layout_marginBottom="16dp">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:imeActionLabel="@string/login"
                 android:imeOptions="actionDone"
                 android:text="1qaz@WSX"
-                android:inputType="textPassword"
-                android:selectAllOnFocus="true" />
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
             android:background="@drawable/edittext_bg"
             android:hint="@string/prompt_server_path"
             android:layout_marginBottom="16dp">
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/serverPath"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

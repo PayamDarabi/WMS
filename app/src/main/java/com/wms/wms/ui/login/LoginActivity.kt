@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
         val username = binding.username
         val password = binding.password
+        val tilpassword = binding.tilpassword
         val serverPath = binding.serverPath
         val login = binding.login
         val loading = binding.loading
@@ -55,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                 username.error = getString(loginState.usernameError)
             }
             if (loginState.passwordError != null) {
-                password.error = getString(loginState.passwordError)
+                tilpassword.error = getString(loginState.passwordError)
             }
         })
 
@@ -68,11 +69,11 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+                //Complete and destroy login activity once successful
+                finish()
             }
             setResult(Activity.RESULT_OK)
 
-            //Complete and destroy login activity once successful
-            finish()
         })
 
         username.afterTextChanged {
