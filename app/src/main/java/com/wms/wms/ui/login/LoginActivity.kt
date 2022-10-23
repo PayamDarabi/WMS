@@ -16,7 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import com.wms.wms.R
 import com.wms.wms.data.helper.PreferenceHelper
 import com.wms.wms.databinding.ActivityLoginBinding
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -31,8 +30,10 @@ class LoginActivity : AppCompatActivity() {
 
         val username = binding.username
         val password = binding.password
-        val tilpassword = binding.tilpassword
+        val tilPassword = binding.tilpassword
+        val tilServerPath = binding.tilServerPath
         val serverPath = binding.serverPath
+        val tvLogin = binding.tvLogin
         val login = binding.login
         val loading = binding.loading
 
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                 username.error = getString(loginState.usernameError)
             }
             if (loginState.passwordError != null) {
-                tilpassword.error = getString(loginState.passwordError)
+                tilPassword.error = getString(loginState.passwordError)
             }
         })
 
@@ -76,6 +77,7 @@ class LoginActivity : AppCompatActivity() {
 
         })
 
+        tvLogin.setOnClickListener { tilServerPath.visibility=View.VISIBLE }
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
                 username.text.toString(),

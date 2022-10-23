@@ -43,6 +43,6 @@ class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length >= 8 && password.isNotBlank()
+        return password.length >= 6 && password.isNotBlank()
     }
 }

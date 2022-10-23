@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.2"
             android:layout_height="wrap_content"
-            android:text="Mobile"
+            android:text="@string/mobile"
             android:textColor="@color/yellow_500"
             android:textSize="16sp">
         </androidx.appcompat.widget.AppCompatTextView>
@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.8"
             android:layout_height="wrap_content"
-            android:text="Warehoure Management System"
+            android:text="@string/warehouse_management_system"
             android:textSize="16sp">
         </androidx.appcompat.widget.AppCompatTextView>
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
-                android:text="m.shahryari" />
+                android:text="@string/default_user" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_height="match_parent"
                 android:imeActionLabel="@string/login"
                 android:imeOptions="actionDone"
-                android:text="1qaz@WSX"
+                android:text="@string/default_password"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -98,6 +98,7 @@
             android:id="@+id/tilServerPath"
             android:background="@drawable/edittext_bg"
             android:hint="@string/prompt_server_path"
+            android:visibility="gone"
             android:layout_marginBottom="16dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/serverPath"
@@ -105,7 +106,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:inputType="text"
-                android:visibility="visible"
                 android:text="@string/default_base_server_path"
                 android:selectAllOnFocus="true"
                 />
@@ -137,7 +137,7 @@
             android:gravity="end"
             android:layout_marginEnd="4dp"
             android:layout_height="wrap_content"
-            android:text="Copy Right"
+            android:text="@string/copy_right"
             android:textSize="16sp">
         </androidx.appcompat.widget.AppCompatTextView>
         <androidx.appcompat.widget.AppCompatTextView
@@ -146,7 +146,7 @@
             android:textColor="@color/yellow_500"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="BitFinity"
+            android:text="@string/bitfinity"
             android:gravity="start"
             android:textSize="16sp">
         </androidx.appcompat.widget.AppCompatTextView>

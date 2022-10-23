@@ -3,15 +3,15 @@
 
     <item>
         <shape android:shape="rectangle">
-        <solid android:color="@color/gray_200" />
-    </shape>
+            <solid android:color="@color/gray_200" />
+        </shape>
     </item>
 
     <item
-        android:bottom="-500dp"
-        android:left="-80dp"
-        android:right="-1000dp"
-        android:top="100dp">
+        android:bottom="-100dp"
+        android:left="-40dp"
+        android:right="-100dp"
+        android:top="175dp">
         <shape android:shape="oval">
             <solid android:color="@color/yellow_500" />
         </shape>
