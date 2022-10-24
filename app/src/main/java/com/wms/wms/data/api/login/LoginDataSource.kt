@@ -1,6 +1,7 @@
-package com.wms.wms.data
+package com.wms.wms.data.api.login
 
 import android.util.Log
+import com.wms.wms.data.UserManager
 import com.wms.wms.data.api.IApi
 import com.wms.wms.data.api.RetrofitClient
 import com.wms.wms.data.model.response.ExceptionResponse
@@ -32,6 +33,7 @@ class LoginDataSource {
                     val current = Calendar.getInstance().time
                     UserManager.login(
                         data.username,
+                        data.fullname,
                         data.accessToken,
                         current.time + (1000 * 60 * 60),
                         cookie

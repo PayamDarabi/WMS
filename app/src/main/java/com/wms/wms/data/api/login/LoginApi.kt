@@ -1,4 +1,4 @@
-package com.wms.wms.data
+package com.wms.wms.data.api.login
 
 import com.wms.wms.data.model.response.LoginResponse
 import com.wms.wms.data.model.response.ApiResult

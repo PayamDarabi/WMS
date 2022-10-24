@@ -2,8 +2,8 @@ package com.wms.wms.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.wms.wms.data.LoginDataSource
-import com.wms.wms.data.LoginApi
+import com.wms.wms.data.api.login.LoginDataSource
+import com.wms.wms.data.api.login.LoginApi
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

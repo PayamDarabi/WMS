@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wms.wms.R
-import com.wms.wms.data.LoginApi
+import com.wms.wms.data.api.login.LoginApi
 import com.wms.wms.data.model.response.ApiResult
 
 class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {

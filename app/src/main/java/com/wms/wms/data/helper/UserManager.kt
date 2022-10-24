@@ -50,13 +50,14 @@ class UserManager {
 
         fun login(
             username: String?,
+            fullname: String,
             accessToken: String?,
             expireAt: Long,
             cookie: String
         ) {
             if (!username.isNullOrEmpty() && !accessToken.isNullOrEmpty()) {
 
-                user = User(username, accessToken, expireAt, cookie)
+                user = User(username,fullname, accessToken, expireAt, cookie)
 
                 PreferenceHelper.setObject("User", user)
 

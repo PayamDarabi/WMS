@@ -11,30 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WMS"
+        android:usesCleartextTraffic="true"
         tools:targetApi="33">
-        <activity
-            android:name=".ReceivingDetailsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_receiving_details"
-            android:theme="@style/Theme.WMS.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".PutawayActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ReceivingActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false"
