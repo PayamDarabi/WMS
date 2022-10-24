@@ -33,23 +33,21 @@ class LoginActivity : AppCompatActivity() {
         val tilPassword = binding.tilpassword
         val tilServerPath = binding.tilServerPath
         val serverPath = binding.serverPath
-        val tvLogin = binding.tvLogin
         val login = binding.login
         val loading = binding.loading
 
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        loginViewModel =
+            ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
             login.isEnabled = loginState.isDataValid
-            if(loginState.isDataValid) {
+            if (loginState.isDataValid) {
                 login.setBackgroundColor(getColor(R.color.yellow_500))
                 login.setTextColor(getColor(R.color.white))
-            }
-            else{
+            } else {
                 login.setBackgroundColor(getColor(R.color.gray_200))
                 login.setTextColor(getColor(R.color.gray_700))
             }
@@ -77,19 +75,17 @@ class LoginActivity : AppCompatActivity() {
 
         })
 
-        tvLogin.setOnClickListener { tilServerPath.visibility=View.VISIBLE }
+        tilServerPath.visibility = View.VISIBLE
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
+                username.text.toString(), password.text.toString()
             )
         }
 
         password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                    username.text.toString(), password.text.toString()
                 )
             }
 
@@ -97,13 +93,11 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 PreferenceHelper.setString("BaseUrl", serverPath.text.toString())
                 when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        lifecycleScope.launchWhenCreated {
-                            loginViewModel.login(
-                                username.text.toString(),
-                                password.text.toString()
-                            )
-                        }
+                    EditorInfo.IME_ACTION_DONE -> lifecycleScope.launchWhenCreated {
+                        loginViewModel.login(
+                            username.text.toString(), password.text.toString()
+                        )
+                    }
                 }
                 false
             }
@@ -113,8 +107,7 @@ class LoginActivity : AppCompatActivity() {
                 PreferenceHelper.setString("BaseUrl", serverPath.text.toString())
                 lifecycleScope.launchWhenCreated {
                     loginViewModel.login(
-                        username.text.toString(),
-                        password.text.toString()
+                        username.text.toString(), password.text.toString()
                     )
                 }
             }

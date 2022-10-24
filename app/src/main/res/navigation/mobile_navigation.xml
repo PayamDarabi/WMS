@@ -10,13 +10,29 @@
         android:name="com.wms.wms.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_putaway"
+            app:destination="@id/nav_putaway" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_receiving"
+            app:destination="@id/nav_receiving" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_putaway"
+        android:name="com.wms.wms.ui.putaway.PutawayFragment"
+        android:label="@string/putaway"
+        tools:layout="@layout/fragment_putaway" />
 
     <fragment
         android:id="@+id/nav_receiving"
         android:name="com.wms.wms.ui.receiving.ReceivingFragment"
         android:label="@string/receiving"
-        tools:layout="@layout/fragment_receiving" />
+        tools:layout="@layout/fragment_receiving" >
+        <action
+            android:id="@+id/action_nav_receiving_to_nav_receiving_details"
+            app:destination="@id/nav_receiving_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_receiving_details"
