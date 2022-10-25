@@ -15,7 +15,7 @@ class DetailsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Ada
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.detail_card, parent, false)
+            .inflate(R.layout.card_receiving_detail, parent, false)
 
         return ViewHolder(view)
     }

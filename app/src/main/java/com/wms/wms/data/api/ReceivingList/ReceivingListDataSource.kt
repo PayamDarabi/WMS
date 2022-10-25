@@ -18,12 +18,12 @@ import java.util.*
 
 
 class ReceivingListDataSource {
-    suspend fun GetReceivingList(tokenId: String): ApiResult<ReceivingListResponse> {
+    suspend fun GetReceivingList(): ApiResult<List<ReceivingListResponse>> {
         var retrofit = RetrofitClient.getInstance()
         var apiInterface = retrofit.create(IApi::class.java)
 
         try {
-            val response = apiInterface.ReceivingList(ReceivingListRequest(tokenId))
+            val response = apiInterface.receivingList(ReceivingListRequest())
 
             return if (response.isSuccessful) {
                 var cookie = response.headers()["Set-Cookie"]
@@ -31,7 +31,7 @@ class ReceivingListDataSource {
                 if (cookie !== null) {
                     //your code for handaling success response
                     val data = response.body()!!
-                    return ApiResult.Success(data)
+                    return ApiResult.Success(listOf(data))
                 }
                 return ApiResult.RequestError(
 

@@ -41,4 +41,7 @@
     <string name="default_password">123456</string>
     <string name="bitfinity">BitFinity</string>
     <string name="copy_right">Copy Right</string>
+    <string name="driverfullname">DriverFullName</string>
+    <string name="dockcode">DockCode</string>
+    <string name="no_receiving_found">No Receiving Found.</string>
 </resources>

@@ -47,7 +47,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilusername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/prompt_username">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:text="@string/default_user" />
+        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilpassword"
             android:layout_width="match_parent"
@@ -68,7 +82,6 @@
                 android:inputType="textPassword"
                 android:text="@string/default_password" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilServerPath"
             android:layout_width="match_parent"
@@ -89,21 +102,6 @@
                 android:text="@string/default_base_server_path" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilusername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/edittext_bg"
-            android:hint="@string/prompt_username">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text"
-                android:text="@string/default_user" />
-        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
@@ -145,7 +143,7 @@
         </androidx.appcompat.widget.AppCompatTextView>
     </androidx.appcompat.widget.LinearLayoutCompat>
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/login_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

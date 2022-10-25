@@ -28,12 +28,12 @@ class PutawayFragment : Fragment() {
         _binding = FragmentReceivingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val cardReceiving = binding.toReceiptingDetails
+       /* val cardReceiving = binding.toReceiptingDetails
         cardReceiving.setOnClickListener {
             findNavController().navigate(
                 R.id.nav_receiving_details, null, null
             )
-        }
+        }*/
 
         return root
     }

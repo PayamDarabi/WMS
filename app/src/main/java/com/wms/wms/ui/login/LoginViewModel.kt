@@ -20,7 +20,7 @@ class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
         val result = loginApi.login(username, password)
 
         if (result is ApiResult.Success) {
-            _loginResult.value = LoginResult(error = R.string.login)
+            _loginResult.value = LoginResult(success = LoggedInUserView(result.data.username,result.data.fullname,result.data.accessToken))
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }

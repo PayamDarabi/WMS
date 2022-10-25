@@ -171,6 +171,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:itemCount="5"
-            tools:listitem="@layout/detail_card" />
+            tools:listitem="@layout/card_receiving_detail" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

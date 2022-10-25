@@ -6,10 +6,19 @@
     android:background="?colorBackground"
     tools:context=".ui.receiving.ReceivingFragment">
 
-    <TextView
-        android:id="@+id/toReceiptingDetails"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/receiving_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:itemCount="5"
+        tools:listitem="@layout/card_receiving" />
 
+    <ProgressBar
+        android:id="@+id/receiving_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="visible"/>
 </FrameLayout>

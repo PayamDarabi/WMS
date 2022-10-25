@@ -34,10 +34,10 @@ class LoginActivity : AppCompatActivity() {
         val tilServerPath = binding.tilServerPath
         val serverPath = binding.serverPath
         val login = binding.login
-        val loading = binding.loading
+        val loading = binding.loginLoading
 
         loginViewModel =
-            ViewModelProvider(this, LoginViewModelFactory()).get(LoginViewModel::class.java)
+            ViewModelProvider(this, LoginViewModelFactory())[LoginViewModel::class.java]
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
@@ -56,6 +56,10 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginState.passwordError != null) {
                 tilPassword.error = getString(loginState.passwordError)
+            }
+            else{
+                tilPassword.error=""
+                tilPassword.isErrorEnabled=false;
             }
         })
 

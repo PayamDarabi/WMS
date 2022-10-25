@@ -18,7 +18,7 @@ interface IApi {
 
     @Headers("Content-Type: application/json")
     @POST("ReceivingList")
-    suspend fun ReceivingList(
+    suspend fun receivingList(
         @Body receivingListRequest: ReceivingListRequest
     ): Response<ReceivingListResponse>
 }

@@ -11,9 +11,7 @@ import com.wms.wms.data.model.response.ReceivingListResponse
  */
 
 class ReceivingListApi(val dataSource: ReceivingListDataSource) {
-    suspend fun GetReceivingList(tokenId: String): ApiResult<ReceivingListResponse>? {
-        // handle login
-
-        return dataSource.GetReceivingList(tokenId)
+    suspend fun GetReceivingList(): ApiResult<List<ReceivingListResponse>>? {
+        return dataSource.GetReceivingList()
     }
 }

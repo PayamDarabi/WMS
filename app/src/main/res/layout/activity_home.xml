@@ -29,6 +29,7 @@
             android:id="@+id/logout"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:foreground="?android:attr/selectableItemBackground"
             android:orientation="horizontal"
             android:paddingBottom="16dp">
             <ImageView
