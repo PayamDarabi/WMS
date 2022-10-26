@@ -11,17 +11,11 @@
         android:background="?colorBackground"
         tools:context=".ui.receivingDetails.ReceivingDetailsFragment"
     >
-
-
-        <com.google.android.material.textfield.TextInputEditText
+        <com.wms.wms.custom.input.SearchInput
             android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="16dp"
-            android:background="@drawable/bg_card"
-            android:drawableLeft="@drawable/ic_baseline_search_24"
-            android:hint="hint"
-            app:boxStrokeWidth="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
