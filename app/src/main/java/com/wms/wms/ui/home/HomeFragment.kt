@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
         val cardReceiving: CardView = binding.cardReceiving
         val cardPutaway: CardView = binding.cardPutaway
         cardReceiving.setOnClickListener {
-            findNavController().navigate(R.id.nav_receiving_details, null, null)
+            findNavController().navigate(R.id.nav_receiving, null, null)
         }
         cardPutaway.setOnClickListener {
             findNavController().navigate(R.id.nav_putaway, null, null)
