@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorBackground"
+    android:orientation="vertical"
+    tools:context=".ui.receiving.ReceivingFragment">
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?colorBackground"
@@ -22,7 +31,7 @@
             android:id="@+id/receiving_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:itemCount="5"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/card_receiving" />
     </LinearLayout>
     <ProgressBar
@@ -34,3 +43,4 @@
         android:layout_marginBottom="64dp"
         android:visibility="visible"/>
 </FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
