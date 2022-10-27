@@ -3,44 +3,189 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardElevation="6dp">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linReceivingCardContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
-        android:padding="5dp">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/imageview"
-            android:layout_width="40dp"
-            android:src="@drawable/ic_baseline_person_24"
-            android:layout_height="40dp" />
-
-        <TextView
-            android:id="@+id/txtDriverFullName"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linCarInfoContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/driverfullname"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/txtDockCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/yellow_700"
-            android:text="@string/dockcode"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_weight="0.7"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtReceivingNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/receiving_number"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtContainerNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/container_number"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCreatedOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/created_on"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCarTypeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/car_type_title"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/car_fragment_numberplate"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_number_plate"
+                    android:gravity="start">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:id="@+id/imgIran"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_height="match_parent"
+                        android:padding="2dp"
+                        android:src="@drawable/iran" />
+                    <View
+                        android:id="@+id/line1"
+                        android:layout_toEndOf="@id/imgIran"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/car_plaque_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:layout_toStartOf="@id/line2"
+                        android:layout_toEndOf="@id/line1"
+                        android:gravity="center"
+                        android:text="524 ب 12"
+                        android:textColor="#000"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="1dp"
+                        android:layout_toStartOf="@id/car_fir"
+                        android:layout_height="match_parent"
+                        android:background="@color/black" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/car_fir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_alignParentEnd="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtIran"
+                            android:layout_width="match_parent"
+                            android:layout_height="15dp"
+                            android:text="@string/Iran"
+                            android:gravity="center"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:textColor="@color/black"
+                            android:textSize="10dp"
+                            android:textStyle="normal|bold" />
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/car_state_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="15dp"
+                                android:gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="10dp"
+                                android:text="11"
+                                android:textStyle="normal|bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linDriverInfoContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview"
+                android:layout_width="40dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtDriverFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/driverfullname"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtDockCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/dockcode"
+                android:textColor="@color/yellow_700"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>

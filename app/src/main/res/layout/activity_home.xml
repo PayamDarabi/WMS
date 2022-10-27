@@ -39,7 +39,7 @@
                 android:src="@null"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"/>
-         <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_weight="0.8"
                 android:text="@string/logout"

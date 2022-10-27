@@ -7,6 +7,7 @@ data class ReceivingView (
     val containerNumber: String,
     val plaqueNumber: String,
     val carTypeId: Long?,
+    val carTypeTitle: Long?,
     val createdOn: String,
     val receivingId: String,
     val receivingTypeId: Long

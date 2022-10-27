@@ -26,6 +26,7 @@ class ReceivingViewModel(private val receivingListApi: ReceivingListApi) : ViewM
                         item.containerNumber,
                         item.plaqueNumber,
                         item.carTypeId,
+                        item.carTypeTitle,
                         item.createdOn,
                         item.receivingId,
                         item.receivingTypeId

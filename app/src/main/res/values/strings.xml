@@ -44,4 +44,9 @@
     <string name="driverfullname">DriverFullName</string>
     <string name="dockcode">DockCode</string>
     <string name="no_receiving_found">No Receiving Found.</string>
+    <string name="receiving_number">ReceivingNumber</string>
+    <string name="container_number">ContainerNumber</string>
+    <string name="created_on">CreatedOn</string>
+    <string name="car_type_title">CarTypeTitle</string>
+    <string name="Iran">ایران</string>
 </resources>

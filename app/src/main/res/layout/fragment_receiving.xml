@@ -9,31 +9,45 @@
     android:background="?colorBackground"
     android:orientation="vertical"
     tools:context=".ui.receiving.ReceivingFragment">
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?colorBackground"
-    tools:context=".ui.receiving.ReceivingFragment">
 
-
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <com.wms.wms.custom.input.SearchInput
+    <com.wms.wms.custom.input.SearchInput
             android:id="@+id/searchReceiving"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_gravity="center"
             android:layout_margin="16dp" />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/receiving_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/card_receiving" />
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="50dp">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtReceivingItemsCount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="start|center_vertical"
+                android:text="You Have X Items">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <ProgressBar
         android:id="@+id/receiving_loading"
         android:layout_width="wrap_content"
@@ -42,5 +56,4 @@
         android:layout_marginTop="64dp"
         android:layout_marginBottom="64dp"
         android:visibility="visible"/>
-</FrameLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

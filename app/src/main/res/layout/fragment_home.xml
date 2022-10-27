@@ -80,7 +80,7 @@
                     app:cardPreventCornerOverlap="true">
 
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
@@ -116,7 +116,7 @@
                     app:cardMaxElevation="2dp"
                     app:cardPreventCornerOverlap="true">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
@@ -132,7 +132,7 @@
                         android:background="@drawable/menu_oval_primary"
                         android:orientation="vertical">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
@@ -178,7 +178,7 @@
                     app:cardMaxElevation="2dp"
                     app:cardPreventCornerOverlap="true">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
@@ -194,7 +194,7 @@
                         android:background="@drawable/menu_oval_primary"
                         android:orientation="vertical">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
@@ -238,7 +238,7 @@
                     app:cardMaxElevation="2dp"
                     app:cardPreventCornerOverlap="true">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
@@ -254,7 +254,7 @@
                         android:background="@drawable/menu_oval_primary"
                         android:orientation="vertical">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
@@ -290,7 +290,7 @@
                     app:cardMaxElevation="2dp"
                     app:cardPreventCornerOverlap="true">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
@@ -307,7 +307,7 @@
                         android:background="@drawable/menu_oval_white"
                         android:orientation="vertical">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"

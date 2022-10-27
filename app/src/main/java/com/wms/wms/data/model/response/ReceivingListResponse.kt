@@ -14,6 +14,8 @@ data class ReceivingListResponse(
     val plaqueNumber: String,
     @SerializedName("CarTypeID")
     val carTypeId: Long?,
+    @SerializedName("CarTypeTitle")
+    val carTypeTitle: Long?,
     @SerializedName("CreatedOn")
     val createdOn: String,
     @SerializedName("ReceivingID")

@@ -27,8 +27,6 @@ class ReceivingListDataSource {
         try {
             val response = apiInterface.receivingList(ReceivingListRequest())
             return if (response.isSuccessful) {
-
-                //your code for handaling success response
                 val data = response.body()!!
                 return ApiResult.Success(data)
             } else {

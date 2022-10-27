@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,17 +27,17 @@ class ReceivingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val receivingViewModel =
-            ViewModelProvider(this,ReceivingViewModelFactory())[ReceivingViewModel::class.java]
+            ViewModelProvider(this, ReceivingViewModelFactory())[ReceivingViewModel::class.java]
 
         _binding = FragmentReceivingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val loading = root.findViewById<ProgressBar>(R.id.receiving_loading)
-
+        val ItemsCount = root.findViewById<TextView>(R.id.txtReceivingItemsCount)
         val recyclerview = root.findViewById<RecyclerView>(R.id.receiving_recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(activity)
         swipeRefreshLayout = root.findViewById(R.id.container)
         lifecycleScope.launchWhenCreated {
-           receivingViewModel.getReceivingList()
+            receivingViewModel.getReceivingList()
         }
 
         swipeRefreshLayout.setOnRefreshListener {
@@ -48,27 +49,24 @@ class ReceivingFragment : Fragment() {
             }
         }
 
-            receivingViewModel.receivingResult.observe(viewLifecycleOwner, Observer {
-                val receivingResult = it ?: return@Observer
+        receivingViewModel.receivingResult.observe(viewLifecycleOwner, Observer {
+            val receivingResult = it ?: return@Observer
 
-                loading.visibility = View.GONE
-                if (receivingResult.error != null) {
-                    Toast.makeText(requireActivity(), getString(R.string.no_receiving_found), Toast.LENGTH_LONG)
-                        .show()
-                }
-                if (receivingResult.success != null) {
-
-                    val adapter = ReceivingAdapter(receivingResult.success)
-                    recyclerview.adapter = adapter
-                }
-            })
-
-       /* val cardReceiving = binding.toReceiptingDetails
-        cardReceiving.setOnClickListener {
-            findNavController().navigate(
-                R.id.nav_receiving_details, null, null
-            )
-        }*/
+            loading.visibility = View.GONE
+            if (receivingResult.error != null) {
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.no_receiving_found),
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+            }
+            if (receivingResult.success != null) {
+                val adapter = ReceivingAdapter(receivingResult.success)
+                ItemsCount.text = "You Have "+ receivingResult.success.size.toString() +" Items"
+                recyclerview.adapter = adapter
+            }
+        })
         return root
     }
 
