@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_margin="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardElevation="6dp">
 
     <LinearLayout
@@ -12,7 +15,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:foreground="?android:attr/selectableItemBackground"
         android:padding="5dp">
 
         <ImageView
@@ -26,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="15dp"
             android:text="@string/driverfullname"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -36,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textColor="@color/yellow_700"
-            android:layout_marginLeft="15dp"
             android:text="@string/dockcode"
             android:textSize="20sp"
             android:textStyle="bold" />
