@@ -21,7 +21,7 @@ object RetrofitClient {
             .addInterceptor { chain ->
                 var request = chain.request().newBuilder()
                 UserManager.get()?.let {
-                    request = request.addHeader("Cookie", it.cookie )
+                    request = request.addHeader("Cookie", it.cookie)
                 }
                 chain.proceed(request.build())
             }
@@ -30,13 +30,11 @@ object RetrofitClient {
             .build()
 
 
-        var retrofit: Retrofit = Retrofit.Builder()
+        return Retrofit.Builder()
             .baseUrl(PreferenceHelper.getString("BaseUrl"))
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()
-
-        return retrofit
     }
 
 }

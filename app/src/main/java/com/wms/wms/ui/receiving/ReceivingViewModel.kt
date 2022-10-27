@@ -13,23 +13,26 @@ class ReceivingViewModel(private val receivingListApi: ReceivingListApi) : ViewM
 
     suspend fun getReceivingList() {
         // can be launched in a separate asynchronous job
-        val result = receivingListApi.GetReceivingList()
+        val result = receivingListApi.getReceivingList()
+        var receivingList = arrayListOf<ReceivingView>()
 
         if (result is ApiResult.Success) {
-            val receivingList = result.data.map {
-                ReceivingView(
-                    it.driverFullName,
-                    it.dockCode,
-                    it.receivingNumber,
-                    it.containerNumber,
-                    it.plaqueNumber,
-                    it.carTypeId,
-                    it.createdOn,
-                    it.receivingId,
-                    it.receivingTypeId
+            for (item in result.data) {
+                receivingList.add(
+                    ReceivingView(
+                        item.driverFullName,
+                        item.dockCode,
+                        item.receivingNumber,
+                        item.containerNumber,
+                        item.plaqueNumber,
+                        item.carTypeId,
+                        item.createdOn,
+                        item.receivingId,
+                        item.receivingTypeId
+                    )
                 )
             }
-            _receivingResult.value = ReceivingResult(success =   receivingList)
+            _receivingResult.value = ReceivingResult(success = receivingList)
         } else {
             _receivingResult.value = ReceivingResult()
         }

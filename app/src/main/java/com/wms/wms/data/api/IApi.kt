@@ -4,6 +4,7 @@ import com.wms.wms.data.model.request.LoginRequest
 import com.wms.wms.data.model.request.ReceivingListRequest
 import com.wms.wms.data.model.response.LoginResponse
 import com.wms.wms.data.model.response.ReceivingListResponse
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -20,5 +21,5 @@ interface IApi {
     @POST("ReceivingList")
     suspend fun receivingList(
         @Body receivingListRequest: ReceivingListRequest
-    ): Response<ReceivingListResponse>
+    ): Response<ArrayList<ReceivingListResponse>>
 }

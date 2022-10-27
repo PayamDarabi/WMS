@@ -1,7 +1,5 @@
 package com.wms.wms.data.api.ReceivingList
 
-import com.wms.wms.data.api.login.LoginDataSource
-import com.wms.wms.data.model.response.LoginResponse
 import com.wms.wms.data.model.response.ApiResult
 import com.wms.wms.data.model.response.ReceivingListResponse
 
@@ -11,7 +9,7 @@ import com.wms.wms.data.model.response.ReceivingListResponse
  */
 
 class ReceivingListApi(val dataSource: ReceivingListDataSource) {
-    suspend fun GetReceivingList(): ApiResult<List<ReceivingListResponse>>? {
-        return dataSource.GetReceivingList()
+    suspend fun getReceivingList(): ApiResult<ArrayList<ReceivingListResponse>>? {
+        return dataSource.getReceivingList()
     }
 }

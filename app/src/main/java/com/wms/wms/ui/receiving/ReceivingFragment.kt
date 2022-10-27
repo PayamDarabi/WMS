@@ -1,6 +1,7 @@
 package com.wms.wms.ui.receiving
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,28 +36,28 @@ class ReceivingFragment : Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(activity)
 
         lifecycleScope.launchWhenCreated {
-            receivingViewModel.getReceivingList()
+           receivingViewModel.getReceivingList()
         }
 
-        activity?.let { ac ->
-            receivingViewModel.receivingResult.observe(ac, Observer {
-                val receivingResult = it ?: return@Observer
 
+            receivingViewModel.receivingResult.observe(viewLifecycleOwner, Observer {
+                val receivingResult = it ?: return@Observer
+                Toast.makeText(requireActivity(), receivingResult.success?.size.toString() , Toast.LENGTH_LONG)
+                    .show()
                 loading.visibility = View.GONE
                 if (receivingResult.error != null) {
-                    Toast.makeText(ac, getString(R.string.no_receiving_found), Toast.LENGTH_LONG)
+                    Toast.makeText(requireActivity(), getString(R.string.no_receiving_found), Toast.LENGTH_LONG)
                         .show()
                 }
                 if (receivingResult.success != null) {
-                    Toast.makeText(ac, "Found", Toast.LENGTH_LONG)
+                    Toast.makeText(requireActivity(), "Found", Toast.LENGTH_LONG)
                         .show()
 
                     val adapter = ReceivingAdapter(receivingResult.success)
                     recyclerview.adapter = adapter
-                    adapter.notifyDataSetChanged()
+                    recyclerview.adapter?.notifyDataSetChanged()
                 }
             })
-        }
 
        /* val cardReceiving = binding.toReceiptingDetails
         cardReceiving.setOnClickListener {
