@@ -1,8 +1,10 @@
 package com.wms.wms.data.api
 
 import com.wms.wms.data.model.request.LoginRequest
+import com.wms.wms.data.model.request.ReceivingDetailListRequest
 import com.wms.wms.data.model.request.ReceivingListRequest
 import com.wms.wms.data.model.response.LoginResponse
+import com.wms.wms.data.model.response.ReceivingDetailListResponse
 import com.wms.wms.data.model.response.ReceivingListResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -22,4 +24,11 @@ interface IApi {
     suspend fun receivingList(
         @Body receivingListRequest: ReceivingListRequest
     ): Response<ArrayList<ReceivingListResponse>>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("ReceivingDetailList")
+    suspend fun receivingDetailList(
+        @Body receivingListRequest: ReceivingDetailListRequest
+    ): Response<List<ReceivingDetailListResponse>>
 }

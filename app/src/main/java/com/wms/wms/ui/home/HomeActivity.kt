@@ -1,7 +1,6 @@
 package com.wms.wms.ui.home
 
 import android.os.Bundle
-import android.os.UserManager
 import android.view.Menu
 import android.view.View
 import android.widget.TextView
@@ -15,10 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.wms.wms.R
-import com.wms.wms.data.helper.PreferenceHelper
 import com.wms.wms.databinding.ActivityHomeBinding
-import com.wms.wms.ui.login.LoginViewModel
-import com.wms.wms.ui.login.LoginViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
 
@@ -42,8 +38,10 @@ class HomeActivity : AppCompatActivity() {
         }
         val navView: NavigationView = binding.navView
         val header: View = navView.getHeaderView(0)
-        header.findViewById<TextView>(R.id.fullName).setText(com.wms.wms.data.UserManager.get()?.fullname
-            ?: "")
+        header.findViewById<TextView>(R.id.fullName).setText(
+            com.wms.wms.data.UserManager.get()?.fullname
+                ?: ""
+        )
         val navController = findNavController(R.id.nav_host_fragment_content_home)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
