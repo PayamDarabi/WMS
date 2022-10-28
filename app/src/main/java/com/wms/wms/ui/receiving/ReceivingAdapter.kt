@@ -7,8 +7,7 @@ package com.wms.wms.ui.receiving
     import androidx.recyclerview.widget.RecyclerView
     import com.wms.wms.R
 
-class ReceivingAdapter(private val mList: List<ReceivingView>) : RecyclerView.Adapter<ReceivingAdapter.ViewHolder>() {
-
+class ReceivingAdapter(private var receivingList: List<ReceivingView>) : RecyclerView.Adapter<ReceivingAdapter.ViewHolder>() {
         // create new views
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             // inflates the card_view_design view
@@ -22,7 +21,7 @@ class ReceivingAdapter(private val mList: List<ReceivingView>) : RecyclerView.Ad
         // binds the list items to a view
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-            val receivingView = mList[position]
+            val receivingView = receivingList[position]
 
             // sets the image to the imageview from our itemHolder class
             holder.txtDriverFullName.text = receivingView.driverFullName
@@ -49,10 +48,18 @@ class ReceivingAdapter(private val mList: List<ReceivingView>) : RecyclerView.Ad
 
         // return the number of the items in the list
         override fun getItemCount(): Int {
-            return mList.size
+            return receivingList.size
         }
 
-        // Holds the views for adding it to image and text
+    fun filterList(filterlist: ArrayList<ReceivingView>) {
+        // below line is to add our filtered
+        // list in our course array list.
+        receivingList = filterlist
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged()
+    }
+    // Holds the views for adding it to image and text
         class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
             val txtDriverFullName: TextView = itemView.findViewById(R.id.txtDriverFullName)
             val txtDockCode: TextView = itemView.findViewById(R.id.txtDockCode)

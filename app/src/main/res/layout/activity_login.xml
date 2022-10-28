@@ -110,6 +110,8 @@
             android:background="@color/gray_200"
             android:enabled="false"
             android:text="@string/login"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
             android:textColor="@color/gray_700" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

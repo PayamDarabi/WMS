@@ -19,17 +19,11 @@ class SearchInput(context: Context, attrs: AttributeSet) : TextInputEditText(con
         ).apply {
 
             try {
-//              mShowText = getBoolean(R.layout.SearchInput_showText, false)
-//              textPos = getInteger(R.styleable.SearchInput_labelPosition, 0)
             } finally {
                 recycle()
             }
         }
 
-//        layout_width="match_parent"
-//        android:layout_height="40dp"
-//        android:layout_margin="16dp"
-//        app:boxStrokeWidth="0dp"
         hint = "Search"
         background = ContextCompat.getDrawable(context, R.drawable.bg_card)
 

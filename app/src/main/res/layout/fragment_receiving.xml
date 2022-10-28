@@ -43,17 +43,18 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_gravity="start|center_vertical"
-                android:text="You Have X Items">
+                android:text="@string/you_have_0_items">
 
             </androidx.appcompat.widget.AppCompatTextView>
         </androidx.appcompat.widget.LinearLayoutCompat>
+        <ProgressBar
+            android:id="@+id/receiving_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="visible"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
-    <ProgressBar
-        android:id="@+id/receiving_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="visible"/>
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
