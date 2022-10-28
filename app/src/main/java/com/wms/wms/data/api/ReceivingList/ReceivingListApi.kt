@@ -9,7 +9,7 @@ import com.wms.wms.data.model.response.ReceivingListResponse
  */
 
 class ReceivingListApi(val dataSource: ReceivingListDataSource) {
-    suspend fun getReceivingList(): ApiResult<ArrayList<ReceivingListResponse>>? {
+    suspend fun getReceivingList(): ApiResult<ArrayList<ReceivingListResponse>> {
         return dataSource.getReceivingList()
     }
 }

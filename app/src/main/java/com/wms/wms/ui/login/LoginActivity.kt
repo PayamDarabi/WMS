@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         val loading = binding.loginLoading
 
         loginViewModel =
-            ViewModelProvider(this, LoginViewModelFactory())[LoginViewModel::class.java]
+            ViewModelProvider(this, LoginViewModelFactory(application))[LoginViewModel::class.java]
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
@@ -105,7 +105,6 @@ class LoginActivity : AppCompatActivity() {
                 }
                 false
             }
-
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 PreferenceHelper.setString("BaseUrl", serverPath.text.toString())
@@ -123,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
         // TODO : initiate successful logged in experience
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
+    private fun showLoginFailed(errorString: String) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
 }

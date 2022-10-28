@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    fun getInstance(): Retrofit {
+    fun getInstance(): IApi {
         var mHttpLoggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -20,21 +20,35 @@ object RetrofitClient {
             .addInterceptor(mHttpLoggingInterceptor)
             .addInterceptor { chain ->
                 var request = chain.request().newBuilder()
+
                 UserManager.get()?.let {
                     request = request.addHeader("Cookie", it.cookie)
                 }
-                chain.proceed(request.build())
+                val response = chain.proceed(request.build())
+
+                if (response.code == 401 && !UserManager.get()?.accessToken.isNullOrEmpty()) {
+                    UserManager.logout()
+                }
+
+                response
             }
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
 
 
-        return Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(PreferenceHelper.getString("BaseUrl"))
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()
+
+
+        return retrofit.create(IApi::class.java)
     }
+
+
+
+
 
 }

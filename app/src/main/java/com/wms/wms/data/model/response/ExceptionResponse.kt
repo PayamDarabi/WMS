@@ -4,27 +4,29 @@ import com.google.gson.annotations.SerializedName
 
 data class ExceptionResponse(
     @SerializedName("IsSucceed")
-    val isSucceed: Boolean,
+    val isSucceed: Boolean? = null,
     @SerializedName("UpdatedAny")
-    val updatedAny: Boolean,
+    val updatedAny: Boolean? = null,
     @SerializedName("MessageCode")
-    val messageCode: Long,
+    val messageCode: Long? = null,
     @SerializedName("MessageType")
-    val messageType: Long,
+    val messageType: Long? = null,
+    @SerializedName("Message")
+    val message: String,
     @SerializedName("Messages")
-    val messages: String,
+    val messages: String? = null,
     @SerializedName("ReturnValue")
-    val returnValue: String,
+    val returnValue: String? = null,
     @SerializedName("EntityID")
-    val entityId: Any?,
+    val entityId: Any? = null,
     @SerializedName("EnableUpdate")
-    val enableUpdate: Boolean,
+    val enableUpdate: Boolean? = null,
     @SerializedName("EnableInsert")
-    val enableInsert: Boolean,
+    val enableInsert: Boolean? = null,
     @SerializedName("EnableClose")
-    val enableClose: Boolean,
+    val enableClose: Boolean? = null,
     @SerializedName("EnableConfirm")
-    val enableConfirm: Boolean,
+    val enableConfirm: Boolean? = null,
     @SerializedName("EntityStringKey")
-    val entityStringKey: Any?,
+    val entityStringKey: Any? = null,
 )

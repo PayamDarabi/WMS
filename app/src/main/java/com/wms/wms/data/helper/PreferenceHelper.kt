@@ -2,9 +2,7 @@ package com.wms.wms.data.helper
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import com.google.gson.Gson
-import com.wms.wms.data.UserManager
 
 object PreferenceHelper {
     var applicationContext: Context? = null
@@ -14,7 +12,7 @@ object PreferenceHelper {
     }
 
     fun defaultPrefs(context: Context): SharedPreferences =
-        context.getSharedPreferences("data",Context.MODE_PRIVATE)
+        context.getSharedPreferences("data", Context.MODE_PRIVATE)
 
     inline fun <reified T : Any> getObject(key: String, defaultValue: T? = null): T? {
         val result = applicationContext?.let { defaultPrefs(it).getString(key, null) }

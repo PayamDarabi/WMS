@@ -6,11 +6,12 @@ import com.wms.wms.data.model.request.ReceivingListRequest
 import com.wms.wms.data.model.response.LoginResponse
 import com.wms.wms.data.model.response.ReceivingDetailListResponse
 import com.wms.wms.data.model.response.ReceivingListResponse
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
+
+
 
 interface IApi {
     @Headers("Content-Type: application/json")

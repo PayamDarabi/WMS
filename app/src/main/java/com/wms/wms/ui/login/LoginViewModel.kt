@@ -1,13 +1,18 @@
 package com.wms.wms.ui.login
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wms.wms.R
 import com.wms.wms.data.api.login.LoginApi
+import com.wms.wms.data.api.login.LoginDataSource
 import com.wms.wms.data.model.response.ApiResult
 
-class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
+class LoginViewModel(private val application: Application) : ViewModel() {
+    private val loginApi = LoginApi(
+        dataSource = LoginDataSource()
+    )
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -19,10 +24,21 @@ class LoginViewModel(private val loginApi: LoginApi) : ViewModel() {
         // can be launched in a separate asynchronous job
         val result = loginApi.login(username, password)
 
-        if (result is ApiResult.Success) {
-            _loginResult.value = LoginResult(success = LoggedInUserView(result.data.username,result.data.fullname,result.data.accessToken))
+
+
+        if (result.isSuccessful && result.data !== null) {
+            _loginResult.value = LoginResult(
+                success = LoggedInUserView(
+                    result.data!!.username,
+                    result.data!!.fullname,
+                    result.data!!.accessToken
+                )
+            )
         } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
+            _loginResult.value = LoginResult(
+                error = result.errorBody?.message
+                    ?: application.resources.getString(R.string.login_failed)
+            )
         }
     }
 

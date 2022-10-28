@@ -16,8 +16,8 @@ class ReceivingViewModel(private val receivingListApi: ReceivingListApi) : ViewM
         val result = receivingListApi.getReceivingList()
         var receivingList = arrayListOf<ReceivingView>()
 
-        if (result is ApiResult.Success) {
-            for (item in result.data) {
+        if (result.isSuccessful && result.data !==null) {
+            for (item in result.data!!) {
                 receivingList.add(
                     ReceivingView(
                         item.driverFullName,
