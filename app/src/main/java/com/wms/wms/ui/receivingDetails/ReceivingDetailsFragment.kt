@@ -1,6 +1,7 @@
 package com.wms.wms.ui.receivingDetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,10 +66,11 @@ class ReceivingDetailsFragment : Fragment() {
 //        }
         }
 
-
+        val receivingId = arguments?.getString("receivingId")!!
+        Log.d("receivingId",receivingId)
         lifecycleScope.launchWhenCreated {
             viewModel.fetchList(
-                "c3cc7ea0-58bf-4711-b5e1-985dcb00e083"
+                receivingId
             )
         }
         // ArrayList of class ItemsViewModel

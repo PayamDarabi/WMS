@@ -1,20 +1,16 @@
 package com.wms.wms.ui.receiving
 
-import android.R.attr
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.AdapterView.OnItemClickListener
-import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -67,7 +63,7 @@ class ReceivingFragment : Fragment() {
         searchReceiving.doOnTextChanged { text, start, before, count ->
             filter(text.toString())
         }
-        receivingViewModel.receivingResult.observe(viewLifecycleOwner, Observer {
+        receivingViewModel.receivingResult.observe(viewLifecycleOwner, Observer { it ->
             val receivingResult = it ?: return@Observer
 
             loading.visibility = View.GONE
@@ -80,7 +76,14 @@ class ReceivingFragment : Fragment() {
             }
             if (receivingResult.success != null) {
                 receivingList = receivingResult.success
-                receivingAdapter = ReceivingAdapter(receivingResult.success)
+                receivingAdapter = ReceivingAdapter(
+                    receivingList = receivingResult.success,
+                    clickListener = { item ->
+                        val bundle = Bundle()
+                        bundle.putString("receivingId", item.receivingId)
+                        findNavController().navigate(R.id.nav_receiving_details,bundle)
+                    })
+
                 itemsCount.text = "You Have " + receivingResult.success.size.toString() + " Items"
                 receivingRw.adapter = receivingAdapter
                 for (item in receivingList) {

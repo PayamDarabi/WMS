@@ -37,6 +37,11 @@
     <fragment
         android:id="@+id/nav_receiving_details"
         android:name="com.wms.wms.ui.receivingDetails.ReceivingDetailsFragment"
-        android:label="ReceivingDetails" />
+        android:label="ReceivingDetails" >
+        <argument
+            android:name="receivingId"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 
 </navigation>
