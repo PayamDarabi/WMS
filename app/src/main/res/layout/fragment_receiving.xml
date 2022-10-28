@@ -15,46 +15,45 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-    <com.wms.wms.custom.input.SearchInput
+        <AutoCompleteTextView
+            android:hint="@string/search"
+            android:padding="2dp"
+            android:background="@drawable/edittext_bg"
             android:id="@+id/searchReceiving"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:inputType="text"
+            android:lines="1"
+            android:drawableStart="@drawable/ic_baseline_search_24_margin5"
+            android:layout_height="0dp"
+            android:layout_weight="0.07"
             android:layout_gravity="center"
-            android:layout_margin="16dp" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/receiving_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/card_receiving" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_height="50dp">
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtReceivingItemsCount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_gravity="start|center_vertical"
-                android:text="@string/you_have_0_items">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="2dp"/>
         <ProgressBar
             android:id="@+id/receiving_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
-            android:layout_marginBottom="64dp"
             android:visibility="visible"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/receiving_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.87"
+            android:scrollbars="vertical"
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/card_receiving" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtReceivingItemsCount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.05"
+                android:layout_marginStart="8dp"
+                android:layout_gravity="start|center_vertical"
+                android:text="@string/you_have_0_items"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

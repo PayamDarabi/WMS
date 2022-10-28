@@ -50,4 +50,5 @@
     <string name="car_type_title">CarTypeTitle</string>
     <string name="Iran">ایران</string>
     <string name="you_have_0_items">You Have 0 Items</string>
+    <string name="search">Search Driver FullName</string>
 </resources>

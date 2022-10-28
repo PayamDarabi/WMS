@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="4dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardElevation="6dp">
+    app:cardElevation="4dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linReceivingCardContainer"
@@ -84,7 +84,6 @@
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
                         android:layout_height="match_parent"
-                        android:padding="2dp"
                         android:src="@drawable/iran" />
                     <View
                         android:id="@+id/line1"
@@ -103,7 +102,7 @@
                         android:gravity="center"
                         android:text="524 ب 12"
                         android:textColor="#000"
-                        android:textSize="20dp"
+                        android:textSize="16dp"
                         android:textStyle="normal|bold" />
                     <View
                         android:id="@+id/line2"
