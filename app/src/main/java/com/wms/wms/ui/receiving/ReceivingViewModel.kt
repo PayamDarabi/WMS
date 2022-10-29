@@ -12,7 +12,6 @@ class ReceivingViewModel(private val receivingListApi: ReceivingListApi) : ViewM
     val receivingResult: LiveData<ReceivingResult> = _receivingResult
 
     suspend fun getReceivingList() {
-        // can be launched in a separate asynchronous job
         val result = receivingListApi.getReceivingList()
         var receivingList = arrayListOf<ReceivingView>()
 

@@ -11,7 +11,7 @@ import com.wms.wms.data.model.response.ReceivingDetailListResponse
 
 
 class ReceivingDetailListDataSource {
-    suspend fun GetReceivingList(ReceivingID: String): ApiResult<List<ReceivingDetailListResponse>> {
+    suspend fun getReceivingDetailList(ReceivingID: String): ApiResult<List<ReceivingDetailListResponse>> {
         var apiInterface = RetrofitClient.getInstance()
 
         return try {
