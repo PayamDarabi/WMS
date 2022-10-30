@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wms.wms.R
 import com.wms.wms.databinding.FragmentReceivingDetailsBinding
+import com.wms.wms.ui.receiving.ReceivingFragment
+import com.wms.wms.ui.receivingDetailsCount.ReceivingDetailsCountFragment
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -30,6 +32,7 @@ class ReceivingDetailsFragment : Fragment() {
     ): View? {
 
         _binding = FragmentReceivingDetailsBinding.inflate(inflater, container, false)
+
         return binding.root
 
     }
@@ -58,7 +61,7 @@ class ReceivingDetailsFragment : Fragment() {
                 data.add(ItemsViewModel(R.drawable.ic_baseline_input_24, it.productTitle))
             }
             // This will pass the ArrayList to our Adapter
-            val adapter = DetailsAdapter(data)
+            val adapter = DetailsAdapter(data,childFragmentManager)
             // Setting the Adapter with the recyclerview
             recyclerview.adapter = adapter
 //        binding.buttonFirst.setOnClickListener {

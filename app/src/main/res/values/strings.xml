@@ -51,4 +51,6 @@
     <string name="Iran">ایران</string>
     <string name="you_have_0_items">You Have 0 Items</string>
     <string name="search">Search Driver FullName</string>
+    <string name="close">Close</string>
+    <string name="count">Count</string>
 </resources>

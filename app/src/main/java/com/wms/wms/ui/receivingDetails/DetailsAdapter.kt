@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wms.wms.R
+import com.wms.wms.ui.receivingDetailsCount.ReceivingDetailsCountFragment
 
-class DetailsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
 
+class DetailsAdapter(private val mList: List<ItemsViewModel>, fm: FragmentManager) : RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
+    val _fm: FragmentManager=fm
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
@@ -30,7 +35,9 @@ class DetailsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Ada
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text = itemsViewModel.text
-
+        holder.imgDetailsCount.setOnClickListener {
+            ReceivingDetailsCountFragment().show(_fm,"")
+        }
     }
 
     // return the number of the items in the list
@@ -42,5 +49,7 @@ class DetailsAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Ada
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
+        val imgDetailsCount: ImageView = itemView.findViewById(R.id.imgDetailsCount)
+        val imgScanBarcode: ImageView = itemView.findViewById(R.id.imgScanBarcode)
     }
 }

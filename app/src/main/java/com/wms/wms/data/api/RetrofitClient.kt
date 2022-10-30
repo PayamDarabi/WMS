@@ -38,17 +38,11 @@ object RetrofitClient {
 
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(PreferenceHelper.getString("BaseUrl"))
+            .baseUrl(PreferenceHelper.getString("BaseUrl") ?: "http://gi.bitfinity.ir/mobile/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()
 
-
         return retrofit.create(IApi::class.java)
     }
-
-
-
-
-
 }
