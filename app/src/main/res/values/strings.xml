@@ -53,4 +53,6 @@
     <string name="search">Search Driver FullName</string>
     <string name="close">Close</string>
     <string name="count">Count</string>
+    <string name="serial_scan">Serial Scan</string>
+    <string name="input_serial">Input Serial</string>
 </resources>

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wms.wms.R
 import com.wms.wms.ui.receivingDetailsCount.ReceivingDetailsCountFragment
+import com.wms.wms.ui.receivingDetailsScanList.ReceivingDetailsScanListFragment
 
 
 class DetailsAdapter(private val mList: List<ItemsViewModel>, fm: FragmentManager) : RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
@@ -37,6 +38,10 @@ class DetailsAdapter(private val mList: List<ItemsViewModel>, fm: FragmentManage
         holder.textView.text = itemsViewModel.text
         holder.imgDetailsCount.setOnClickListener {
             ReceivingDetailsCountFragment().show(_fm,"")
+        }
+
+        holder.imgScanBarcode.setOnClickListener {
+            ReceivingDetailsScanListFragment().show(_fm,"")
         }
     }
 

@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="550dp"
     android:background="@drawable/bg_gredient"
     android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     app:circularflow_radiusInDP="10dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -22,7 +23,7 @@
             android:layout_gravity="center|end"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:text="@string/count"/>
+            android:text="@string/serial_scan"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -58,9 +59,23 @@
             android:lines="1"
             android:textColor="@color/black"
             android:layout_marginHorizontal="4dp"
-            android:hint="@string/count"
+            android:hint="@string/input_serial"
             android:inputType="number"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/receiving_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scrollbars="vertical"
+            android:layout_margin="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/card_scan_serial" />
+</androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -72,7 +87,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnCancel"
             android:text="Cancel"/>
-
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,5 +94,6 @@
             android:background="@color/yellow_700"
             android:id="@+id/btnConfirm"
             android:text="Confirm"/>
-         </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

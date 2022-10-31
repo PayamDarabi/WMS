@@ -1,13 +1,7 @@
 package com.wms.wms.data.api
 
-import com.wms.wms.data.model.request.LoginRequest
-import com.wms.wms.data.model.request.ReceivingDetailCountRequest
-import com.wms.wms.data.model.request.ReceivingDetailListRequest
-import com.wms.wms.data.model.request.ReceivingListRequest
-import com.wms.wms.data.model.response.LoginResponse
-import com.wms.wms.data.model.response.ReceivingDetailCountResponse
-import com.wms.wms.data.model.response.ReceivingDetailListResponse
-import com.wms.wms.data.model.response.ReceivingListResponse
+import com.wms.wms.data.model.request.*
+import com.wms.wms.data.model.response.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -40,4 +34,11 @@ interface IApi {
     suspend fun receivingDetailCount(
         @Body receivingDetailCountRequest: ReceivingDetailCountRequest
     ): Response<ReceivingDetailCountResponse>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("ReceivingDetailScanList")
+    suspend fun receivingDetailScanList(
+        @Body receivingDetailCountRequest: ReceivingDetailScanListRequest
+    ): Response<ReceivingDetailScanListResponse>
 }
