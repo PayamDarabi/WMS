@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.wms.wms.R
 import com.wms.wms.data.model.request.ReceivingDetailCountRequest
+import com.wms.wms.data.model.request.ReceivingDetailScanListRequest
 import com.wms.wms.databinding.FragmentReceivingDetailsCountBinding
 import com.wms.wms.databinding.FragmentReceivingDetailsScanListBinding
 
@@ -50,8 +51,8 @@ class ReceivingDetailsScanListFragment : AppCompatDialogFragment() {
         btnConfirm.setOnClickListener {
             lifecycleScope.launchWhenCreated {
                 receivingDetailsCountViewModel.getItems(
-                    ReceivingDetailCountRequest(
-                        "", edtQuantity.text.toString().toInt(), ""
+                    ReceivingDetailScanListRequest(
+                        ""
                     )
                 )
             }

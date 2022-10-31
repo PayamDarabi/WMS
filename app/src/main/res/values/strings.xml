@@ -50,9 +50,10 @@
     <string name="car_type_title">CarTypeTitle</string>
     <string name="Iran">ایران</string>
     <string name="you_have_0_items">You Have 0 Items</string>
-    <string name="search">Search Driver FullName</string>
+    <string name="search">Search</string>
     <string name="close">Close</string>
     <string name="count">Count</string>
     <string name="serial_scan">Serial Scan</string>
     <string name="input_serial">Input Serial</string>
+    <string name="serials">Serials</string>
 </resources>
